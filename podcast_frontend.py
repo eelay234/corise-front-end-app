@@ -39,16 +39,29 @@ def main():
 
         # Display the podcast guest and their details in a side-by-side layout
         col3, col4 = st.columns([3, 7])
+        podcast_guest = ""
+        podcast_guest_org = ""
+        podcast_guest_title = ""
+        response_message = completion["choices"][0]["message"]
+        if response_message.get("function_call"):
+            function_name = response_message["function_call"]["name"]
+            function_args = json.loads(response_message["function_call"]["arguments"])
+            podcast_guest=function_args.get("guest_name")
+            podcast_guest_org=function_args.get("guest_organization")
+            podcast_guest_title=function_args.get("guest_title")
 
         with col3:
             st.subheader("Podcast Guest")
             #st.write(podcast_info['podcast_guest']['name'])
-            st.write(podcast_info['podcast_guest']['guest_name'])
+            if podcast_info['podcast_guest'] is None:
+                st.write("")
+            else:
+                #st.write(podcast_info['podcast_guest'])
+                st.write(podcast_guest)
 
         with col4:
-            st.subheader("Podcast Guest Details")
             #st.write(podcast_info["podcast_guest"]['summary'])
-            st.write(podcast_info["guest_title"]+podcast_info["guest_organization"])
+            st.write(podcast_guest_title+ " "+podcast_guest_organization)
 
         # Display the five key moments
         st.subheader("Key Moments")
