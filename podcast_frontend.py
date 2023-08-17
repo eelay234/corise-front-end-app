@@ -62,6 +62,7 @@ def main():
                 #st.write(podcast_guest)
 
         with col4:
+            st.write(podcast_info['podcast_details'])
             #st.write(podcast_info["podcast_guest"]['summary'])
             #st.write(podcast_guest_title+ " "+podcast_guest_organization)
 
