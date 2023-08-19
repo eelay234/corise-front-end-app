@@ -46,7 +46,7 @@ def main():
 
         with col4:
             st.subheader("Podcast Guest Details")
-            #st.write(podcast_info["podcast_guest"])
+            st.write(podcast_info["podcast_guest_details"])
 
         # Display the five key moments
         st.subheader("Key Moments")
@@ -63,7 +63,6 @@ def main():
     st.sidebar.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
 
     if process_button:
-        placeholder = st.empty()
 
         # Call the function to process the URLs and retrieve podcast guest information
         podcast_info = process_podcast_info(url)
@@ -91,12 +90,11 @@ def main():
 
         with col3:
             st.subheader("Podcast Guest")
-            st.write(podcast_info['podcast_guest']['name'])
-
+            st.write(podcast_info['podcast_guest'])
 
         with col4:
             st.subheader("Podcast Guest Details")
-            st.write(podcast_info["podcast_guest"]['summary'])
+            st.write(podcast_info["podcast_guest_details"])
 
         # Display the five key moments
         st.subheader("Key Moments")
